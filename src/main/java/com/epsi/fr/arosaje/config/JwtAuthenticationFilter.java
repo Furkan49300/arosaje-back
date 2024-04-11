@@ -1,5 +1,6 @@
 package com.epsi.fr.arosaje.config;
 
+import com.epsi.fr.arosaje.config.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

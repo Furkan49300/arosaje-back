@@ -22,10 +22,19 @@ import java.util.Set;
 public class Utilisateur implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id_utilisateur;
+
+    @Column(nullable = false)
     private String prenom;
+
+    @Column(nullable = false)
     private String nom;
+
+    @Column(nullable = false)
     private String mail;
+
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)

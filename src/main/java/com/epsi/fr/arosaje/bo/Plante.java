@@ -3,6 +3,7 @@ package com.epsi.fr.arosaje.bo;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,6 +14,15 @@ public class Plante implements Serializable {
     private String nom_plante;
     private String description;
     private String variete;
+    private Date creele;
+
+    public Date getCreele() {
+        return creele;
+    }
+
+    public void setCreele(Date creele) {
+        this.creele = creele;
+    }
 
     public Plante() {
     }
@@ -61,6 +71,14 @@ public class Plante implements Serializable {
         this.variete = variete;
     }
 
+    public String getVariete() {
+        return variete;
+    }
+
+    public void setVariete(String variete) {
+        this.variete = variete;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Plante{");
@@ -68,6 +86,11 @@ public class Plante implements Serializable {
         sb.append(", nom_plante='").append(nom_plante).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", variete='").append(variete).append('\'');
+        sb.append(", creele=").append(creele);
+        sb.append(", utilisateur=").append(utilisateur);
+        sb.append(", photos=").append(photos);
+        sb.append(", conseils=").append(conseils);
+        sb.append(", reservation=").append(reservation);
         sb.append('}');
         return sb.toString();
     }
