@@ -1,5 +1,7 @@
 package com.epsi.fr.arosaje.bo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +24,6 @@ import java.util.Set;
 public class Utilisateur implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id_utilisateur;
 
     @Column(nullable = false)
@@ -41,9 +42,11 @@ public class Utilisateur implements UserDetails {
     private Role role;
 
 
-    @OneToMany(mappedBy="utilisateur")
+    @OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Plante> plantes;
-    @OneToMany(mappedBy="utilisateur")
+
+    @OneToMany(mappedBy="utilisateur",fetch = FetchType.LAZY)
     private Set<Reservation> reservations;
 
     @OneToMany(mappedBy="utilisateur")

@@ -1,57 +1,40 @@
 package com.epsi.fr.arosaje.bo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
+@Getter
+@Setter
+@CrossOrigin(origins = "http://localhost:3000")
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_reservation;
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
+    private Date dateDebut;
+    private Date dateFin;
     private boolean etat;
 
     public Reservation() {
     }
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="id_utilisateur")
     private Utilisateur utilisateur;
 
-    public Integer getId_reservation() {
-        return id_reservation;
+    @JsonProperty("id_utilisateur")
+    public Integer getUtilisateurId() {
+        return utilisateur != null ? utilisateur.getId_utilisateur() : null;
     }
-
-    public void setId_reservation(Integer id_reservation) {
-        this.id_reservation = id_reservation;
-    }
-
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(LocalDate dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public LocalDate getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(LocalDate dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public boolean isEtat() {
-        return etat;
-    }
-
-    public void setEtat(boolean etat) {
-        this.etat = etat;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Reservation{");
