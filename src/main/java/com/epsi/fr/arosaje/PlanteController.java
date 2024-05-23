@@ -70,6 +70,31 @@ public class PlanteController {
             return ResponseEntity.ok(plantes);
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePlante(@PathVariable Integer id) {
+        Optional<Plante> plante = planteRepository.findById(id);
+        if (plante.isPresent()) {
+            planteRepository.delete(plante.get());
+            return ResponseEntity.ok().body("Plante supprimée avec succès");
+        } else {
+            return ResponseEntity.status(404).body("Plante non trouvée");
+        }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updatePlante(@PathVariable Integer id, @RequestBody Plante updatedPlante) {
+        Optional<Plante> existingPlanteOptional = planteRepository.findById(id);
+        if (existingPlanteOptional.isPresent()) {
+            Plante existingPlante = existingPlanteOptional.get();
+            existingPlante.setNom_plante(updatedPlante.getNom_plante());
+            existingPlante.setDescription(updatedPlante.getDescription());
+            existingPlante.setVariete(updatedPlante.getVariete());
+            // Ajoutez les autres champs que vous souhaitez mettre à jour
 
+            Plante updatedPlanteEntity = planteRepository.save(existingPlante);
+            return ResponseEntity.ok(updatedPlanteEntity);
+        } else {
+            return ResponseEntity.status(404).body("Plante non trouvée");
+        }
+    }
 
 }
