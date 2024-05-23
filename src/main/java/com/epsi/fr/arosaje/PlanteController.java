@@ -22,6 +22,14 @@ public class PlanteController {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
+    @GetMapping("/reservation/{idReservation}")
+    public ResponseEntity<List<Plante>> getPlantesByReservationId(@PathVariable Integer idReservation) {
+        List<Plante> plantes = planteRepository.findByReservationId(idReservation);
+        if (plantes.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(plantes);
+    }
     @PostMapping
     public ResponseEntity<?> createPlante(@RequestBody Plante plante) {
         if (plante.getUtilisateur() != null && plante.getUtilisateur().getId_utilisateur() != null) {

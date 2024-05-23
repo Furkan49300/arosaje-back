@@ -16,6 +16,10 @@ import java.util.List;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:3000")
 public interface PlanteRepository extends JpaRepository<Plante,Integer> {
+
+
+    @Query("SELECT p FROM Plante p WHERE p.reservation.id_reservation = :reservationId")
+    List<Plante> findByReservationId(@Param("reservationId") Integer reservationId);
     @Query("SELECT p FROM Plante p WHERE p.utilisateur.id_utilisateur = :utilisateurId")
     List<Plante> findByUtilisateurId(@Param("utilisateurId") Integer utilisateurId);
 
