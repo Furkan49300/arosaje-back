@@ -1,6 +1,7 @@
 package com.epsi.fr.arosaje.bo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -49,7 +50,8 @@ public class Utilisateur implements UserDetails {
     @OneToMany(mappedBy="utilisateur",fetch = FetchType.LAZY)
     private Set<Reservation> reservations;
 
-    @OneToMany(mappedBy="utilisateur")
+    @OneToMany(mappedBy="utilisateur",fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Conseil> conseils;
 
 

@@ -38,6 +38,7 @@ public class Plante implements Serializable {
 
 
     @OneToMany(mappedBy = "plante")
+    @JsonManagedReference
     private Set<Conseil> conseils;
 
     @OneToOne

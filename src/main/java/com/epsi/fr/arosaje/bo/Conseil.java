@@ -1,45 +1,41 @@
 package com.epsi.fr.arosaje.bo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jshell.execution.Util;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@CrossOrigin(origins = "http://localhost:3000")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Conseil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_conseil;
     private String contenu;
 
-    public Conseil() {
-    }
+
     @ManyToOne
     @JoinColumn(name="id_plante")
+    @JsonBackReference
     private Plante plante;
 
     @ManyToOne
     @JoinColumn(name="id_utilisateur")
+    @JsonIgnore
     private Utilisateur utilisateur;
 
-
-
-    public Integer getId_conseil() {
-        return id_conseil;
-    }
-
-    public void setId_conseil(Integer id_conseil) {
-        this.id_conseil = id_conseil;
-    }
-
-    public String getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
 
     @Override
     public String toString() {

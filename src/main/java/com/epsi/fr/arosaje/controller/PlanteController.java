@@ -1,4 +1,4 @@
-package com.epsi.fr.arosaje;
+package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.bo.Plante;
 import com.epsi.fr.arosaje.bo.Utilisateur;
