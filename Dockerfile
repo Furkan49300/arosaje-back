@@ -1,14 +1,15 @@
-# Utilisez une image de base de JDK
-FROM openjdk:17-jdk-alpine
-
-# Configurez un répertoire de travail
-WORKDIR /app
-
-# Copiez le fichier JAR de l'application dans l'image Docker
-COPY target/arosaje-0.0.1-SNAPSHOT.jar app.jar
-
-# Exposez le port que votre application utilise
-EXPOSE 8080
-
 # Commande pour exécuter l'application
+ENTRYPOINT ["java", "-jar", "app.jar"]
+# Étape 1 : Construction
+FROM maven:3.8.4-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Étape 2 : Exécution
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/arosaje-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
