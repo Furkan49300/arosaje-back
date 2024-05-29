@@ -18,7 +18,6 @@ import java.util.Date;
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    @CrossOrigin(origins = "https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
     public class Reservation implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
