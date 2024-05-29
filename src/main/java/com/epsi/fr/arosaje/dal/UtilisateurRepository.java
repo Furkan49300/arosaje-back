@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestResource
+@CrossOrigin("https://arosaje-crud.vercel.app/")
 public interface UtilisateurRepository extends JpaRepository<Utilisateur,Integer> {
     Optional<Utilisateur> findByMail(String mail);
 

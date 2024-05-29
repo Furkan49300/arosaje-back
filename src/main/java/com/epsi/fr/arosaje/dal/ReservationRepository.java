@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RepositoryRestResource
+@CrossOrigin("https://arosaje-crud.vercel.app/")
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
 
     @Query("SELECT r FROM Reservation r WHERE r.utilisateur.id_utilisateur = :utilisateurId")

@@ -17,6 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
+@CrossOrigin("https://arosaje-crud.vercel.app/")
 public class Plante implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

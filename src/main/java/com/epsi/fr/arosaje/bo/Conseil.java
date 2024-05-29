@@ -18,6 +18,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@CrossOrigin("https://arosaje-crud.vercel.app/")
 public class Conseil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
