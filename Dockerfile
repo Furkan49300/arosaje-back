@@ -1,5 +1,3 @@
-# Commande pour exécuter l'application
-ENTRYPOINT ["java", "-jar", "app.jar"]
 # Étape 1 : Construction
 FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
