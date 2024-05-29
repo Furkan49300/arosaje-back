@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 
 @SpringBootApplication
-@CrossOrigin("*")
+@CrossOrigin("https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
 public class ArosajeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ArosajeApplication.class, args);

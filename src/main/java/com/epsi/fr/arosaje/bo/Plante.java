@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@CrossOrigin(origins = "https://arosaje-crud.vercel.app")
+@CrossOrigin(origins = "https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
 @Getter
 @Setter
 @Builder

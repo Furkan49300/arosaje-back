@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/plantes")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
 public class PlanteController {
 
     @Autowired

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RepositoryRestResource
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
 public interface ConseilRepository extends JpaRepository<Conseil,Integer> {
     List<Conseil> findByPlante(Plante plante);
 }
