@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://arosaje-crud-mgz9swnem-furkan49300s-projects.vercel.app")
 public class AuthenticationController {
 
     private final AuthenticationService service;
