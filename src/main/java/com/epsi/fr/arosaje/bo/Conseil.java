@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://arosaje-crud.vercel.app")
 @Getter
 @Setter
 @AllArgsConstructor

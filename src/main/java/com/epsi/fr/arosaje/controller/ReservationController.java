@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservations")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://arosaje-crud.vercel.app")
 public class ReservationController {
 
     @Autowired

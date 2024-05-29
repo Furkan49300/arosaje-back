@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/plantes")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://arosaje-crud.vercel.app")
 public class PlanteController {
 
     @Autowired

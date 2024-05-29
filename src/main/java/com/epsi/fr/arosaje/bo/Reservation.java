@@ -18,7 +18,7 @@ import java.util.Date;
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://arosaje-crud.vercel.app")
     public class Reservation implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

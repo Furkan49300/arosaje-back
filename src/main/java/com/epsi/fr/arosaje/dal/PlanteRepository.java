@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @RepositoryRestResource
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://arosaje-crud.vercel.app")
 public interface PlanteRepository extends JpaRepository<Plante,Integer> {
 
 
