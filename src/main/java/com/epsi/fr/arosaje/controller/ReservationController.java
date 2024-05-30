@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservations")
-@CrossOrigin("https://arosaje-crud.vercel.app/")
+@CrossOrigin(origins = {"https://arosaje-crud.vercel.app", "http://localhost:3000"})
 @Tag(name = "Reservation API", description = "API pour gérer les réservations")
 public class ReservationController {
 

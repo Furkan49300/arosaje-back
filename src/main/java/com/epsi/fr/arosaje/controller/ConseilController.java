@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/conseils")
-@CrossOrigin("https://arosaje-crud.vercel.app/")
+@CrossOrigin(origins = {"https://arosaje-crud.vercel.app", "http://localhost:3000"})
 @Tag(name = "Conseil API", description = "API pour gérer les conseils")
 public class ConseilController {
 
