@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -23,6 +24,7 @@ public class Plante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_plante;
     private String nom_plante;
+    @Size(max = 300)
     private String description;
     private String variete;
     private Date creele;
