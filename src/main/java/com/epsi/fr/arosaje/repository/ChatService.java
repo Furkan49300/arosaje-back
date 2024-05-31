@@ -1,4 +1,4 @@
-package com.epsi.fr.arosaje.dal;
+package com.epsi.fr.arosaje.repository;
 
 import com.epsi.fr.arosaje.bo.ChatConversation;
 import com.epsi.fr.arosaje.bo.ChatMessage;

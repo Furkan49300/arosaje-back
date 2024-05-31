@@ -1,14 +1,12 @@
 package com.epsi.fr.arosaje;
 
 import com.epsi.fr.arosaje.bo.Plante;
-import com.epsi.fr.arosaje.dal.PlanteRepository;
+import com.epsi.fr.arosaje.repository.PlanteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 

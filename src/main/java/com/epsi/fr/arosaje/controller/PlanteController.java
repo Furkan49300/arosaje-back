@@ -2,8 +2,8 @@ package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.bo.Plante;
 import com.epsi.fr.arosaje.bo.Utilisateur;
-import com.epsi.fr.arosaje.dal.PlanteRepository;
-import com.epsi.fr.arosaje.dal.UtilisateurRepository;
+import com.epsi.fr.arosaje.repository.PlanteRepository;
+import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

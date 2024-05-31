@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje.config;
 
-import com.epsi.fr.arosaje.dal.UtilisateurRepository;
+import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

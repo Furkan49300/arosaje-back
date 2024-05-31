@@ -7,9 +7,8 @@ import com.epsi.fr.arosaje.auth.*;
 import com.epsi.fr.arosaje.bo.Role;
 import com.epsi.fr.arosaje.bo.Utilisateur;
 import com.epsi.fr.arosaje.config.JwtService;
-import com.epsi.fr.arosaje.dal.UtilisateurRepository;
+import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

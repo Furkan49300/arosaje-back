@@ -2,7 +2,7 @@ package com.epsi.fr.arosaje;
 
 import com.epsi.fr.arosaje.bo.Role;
 import com.epsi.fr.arosaje.bo.Utilisateur;
-import com.epsi.fr.arosaje.dal.UtilisateurRepository;
+import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

@@ -1,14 +1,11 @@
 package com.epsi.fr.arosaje.auth;
 
-import com.epsi.fr.arosaje.bo.Role;
 import com.epsi.fr.arosaje.bo.Utilisateur;
 import com.epsi.fr.arosaje.config.JwtService;
-import com.epsi.fr.arosaje.dal.UtilisateurRepository;
+import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
