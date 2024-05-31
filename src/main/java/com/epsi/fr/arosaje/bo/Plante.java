@@ -28,8 +28,12 @@ public class Plante implements Serializable {
     private String description;
     private String variete;
     private Date creele;
+    @Size(max = 300)
     private String url_photo1;
+    @Size(max = 300)
     private String url_photo2;
+    @Size(max = 300)
+
     private String url_photo3;
 
 
