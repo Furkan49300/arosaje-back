@@ -1,8 +1,7 @@
 package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.bo.Reservation;
-import com.epsi.fr.arosaje.bo.Utilisateur;
-import com.epsi.fr.arosaje.repository.ReservationRepository;
+import com.epsi.fr.arosaje.service.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservations")
@@ -25,7 +23,7 @@ import java.util.Optional;
 public class ReservationController {
 
     @Autowired
-    private ReservationRepository reservationRepository;
+    private ReservationService reservationService;
 
     @Operation(summary = "Obtenir une réservation par ID", description = "Récupère une réservation spécifique par son ID.")
     @ApiResponses(value = {
@@ -37,13 +35,7 @@ public class ReservationController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservationById(@Parameter(description = "ID de la réservation à récupérer") @PathVariable Integer id) {
-        Optional<Reservation> reservationOptional = reservationRepository.findById(id);
-        if (!reservationOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Reservation reservation = reservationOptional.get();
-        return ResponseEntity.ok(reservation);
+        return reservationService.getReservationById(id);
     }
 
     @Operation(summary = "Obtenir des réservations par ID d'utilisateur", description = "Récupère toutes les réservations associées à un utilisateur spécifique.")
@@ -56,11 +48,7 @@ public class ReservationController {
     })
     @GetMapping("/user/{idUtilisateur}")
     public ResponseEntity<List<Reservation>> getReservationsByUtilisateurId(@Parameter(description = "ID de l'utilisateur dont les réservations sont à récupérer") @PathVariable Integer idUtilisateur) {
-        List<Reservation> reservations = reservationRepository.findByUtilisateurId(idUtilisateur);
-        if (reservations.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(reservations);
+        return reservationService.getReservationsByUtilisateurId(idUtilisateur);
     }
 
     @Operation(summary = "Mettre à jour une réservation", description = "Met à jour les informations d'une réservation spécifique.")
@@ -72,26 +60,6 @@ public class ReservationController {
     })
     @PatchMapping("/{id}")
     public ResponseEntity<?> updateReservation(@Parameter(description = "ID de la réservation à mettre à jour") @PathVariable Integer id, @RequestBody Map<String, Object> updates) {
-        Optional<Reservation> reservationOptional = reservationRepository.findById(id);
-        if (!reservationOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Reservation reservation = reservationOptional.get();
-
-        if (updates.containsKey("id_utilisateur")) {
-            Integer newUserId = (Integer) updates.get("id_utilisateur");
-            Utilisateur utilisateur = new Utilisateur();
-            utilisateur.setId_utilisateur(newUserId);
-            reservation.setUtilisateur(utilisateur);
-        }
-
-        if (updates.containsKey("etat")) {
-            Boolean newEtat = (Boolean) updates.get("etat");
-            reservation.setEtat(newEtat);
-        }
-
-        reservationRepository.save(reservation);
-        return ResponseEntity.ok().build();
+        return reservationService.updateReservation(id, updates);
     }
 }

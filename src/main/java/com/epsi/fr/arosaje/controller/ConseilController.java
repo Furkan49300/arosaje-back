@@ -2,11 +2,7 @@ package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.ConseilDTO;
 import com.epsi.fr.arosaje.bo.Conseil;
-import com.epsi.fr.arosaje.bo.Plante;
-import com.epsi.fr.arosaje.bo.Utilisateur;
-import com.epsi.fr.arosaje.repository.ConseilRepository;
-import com.epsi.fr.arosaje.repository.PlanteRepository;
-import com.epsi.fr.arosaje.repository.UtilisateurRepository;
+import com.epsi.fr.arosaje.service.ConseilService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/conseils")
@@ -29,13 +24,7 @@ import java.util.Optional;
 public class ConseilController {
 
     @Autowired
-    private ConseilRepository conseilRepository;
-
-    @Autowired
-    private PlanteRepository planteRepository;
-
-    @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private ConseilService conseilService;
 
     @Operation(summary = "Obtenir des conseils par ID de plante", description = "Récupère tous les conseils associés à une plante spécifique.")
     @ApiResponses(value = {
@@ -47,15 +36,7 @@ public class ConseilController {
     })
     @GetMapping("/plante/{id_plante}")
     public ResponseEntity<List<Conseil>> getConseilsByPlanteId(@Parameter(description = "ID de la plante à laquelle les conseils sont associés") @PathVariable Integer id_plante) {
-        Optional<Plante> optionalPlante = planteRepository.findById(id_plante);
-
-        if (optionalPlante.isPresent()) {
-            Plante plante = optionalPlante.get();
-            List<Conseil> conseils = conseilRepository.findByPlante(plante);
-            return ResponseEntity.ok(conseils);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return conseilService.getConseilsByPlanteId(id_plante);
     }
 
     @Operation(summary = "Ajouter un nouveau conseil", description = "Ajoute un nouveau conseil pour une plante et un utilisateur spécifiés.")
@@ -69,22 +50,6 @@ public class ConseilController {
     })
     @PostMapping("/add")
     public ResponseEntity<Conseil> addConseil(@RequestBody ConseilDTO conseilDTO) {
-        Optional<Plante> optionalPlante = planteRepository.findById(conseilDTO.getId_plante());
-        Optional<Utilisateur> optionalUtilisateur = utilisateurRepository.findById(conseilDTO.getId_utilisateur());
-
-        if (optionalPlante.isPresent() && optionalUtilisateur.isPresent()) {
-            Plante plante = optionalPlante.get();
-            Utilisateur utilisateur = optionalUtilisateur.get();
-
-            Conseil conseil = new Conseil();
-            conseil.setPlante(plante);
-            conseil.setUtilisateur(utilisateur);
-            conseil.setContenu(conseilDTO.getContenu());
-
-            Conseil savedConseil = conseilRepository.save(conseil);
-            return ResponseEntity.ok(savedConseil);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
+        return conseilService.addConseil(conseilDTO);
     }
 }

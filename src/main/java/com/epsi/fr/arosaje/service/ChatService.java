@@ -1,7 +1,9 @@
-package com.epsi.fr.arosaje.repository;
+package com.epsi.fr.arosaje.service;
 
 import com.epsi.fr.arosaje.bo.ChatConversation;
 import com.epsi.fr.arosaje.bo.ChatMessage;
+import com.epsi.fr.arosaje.repository.ChatConversationRepository;
+import com.epsi.fr.arosaje.repository.ChatMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,7 @@
 package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.bo.Plante;
-import com.epsi.fr.arosaje.bo.Utilisateur;
-import com.epsi.fr.arosaje.repository.PlanteRepository;
-import com.epsi.fr.arosaje.repository.UtilisateurRepository;
+import com.epsi.fr.arosaje.service.PlanteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/plantes")
@@ -22,10 +19,7 @@ import java.util.Optional;
 public class PlanteController {
 
     @Autowired
-    private PlanteRepository planteRepository;
-
-    @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private PlanteService planteService;
 
     @Operation(summary = "Get plants by reservation ID")
     @ApiResponses(value = {
@@ -35,11 +29,7 @@ public class PlanteController {
     })
     @GetMapping("/reservation/{idReservation}")
     public ResponseEntity<List<Plante>> getPlantesByReservationId(@PathVariable Integer idReservation) {
-        List<Plante> plantes = planteRepository.findByReservationId(idReservation);
-        if (plantes.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(plantes);
+        return planteService.getPlantesByReservationId(idReservation);
     }
 
     @Operation(summary = "Create a new plant")
@@ -50,16 +40,7 @@ public class PlanteController {
     })
     @PostMapping
     public ResponseEntity<?> createPlante(@RequestBody Plante plante) {
-        if (plante.getUtilisateur() != null && plante.getUtilisateur().getId_utilisateur() != null) {
-            Utilisateur utilisateur = utilisateurRepository.findById(plante.getUtilisateur().getId_utilisateur())
-                    .orElseThrow(() -> new RuntimeException("Utilisateur not found"));
-            plante.setUtilisateur(utilisateur);
-        } else {
-            return ResponseEntity.badRequest().body("Utilisateur ID is required");
-        }
-
-        Plante savedPlante = planteRepository.save(plante);
-        return ResponseEntity.ok(savedPlante);
+        return planteService.createPlante(plante);
     }
 
     @Operation(summary = "Get all plants")
@@ -67,8 +48,7 @@ public class PlanteController {
             content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Plante.class)) })
     @GetMapping
     public ResponseEntity<List<Plante>> getAllPlantes() {
-        List<Plante> plantes = planteRepository.findAll();
-        return ResponseEntity.ok(plantes);
+        return planteService.getAllPlantes();
     }
 
     @Operation(summary = "Get a plant by ID")
@@ -79,12 +59,7 @@ public class PlanteController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<?> getPlanteById(@PathVariable Integer id) {
-        Optional<Plante> plante = planteRepository.findById(id);
-        if (plante.isPresent()) {
-            return ResponseEntity.ok(plante.get());
-        } else {
-            return ResponseEntity.status(404).body("Plante not found");
-        }
+        return planteService.getPlanteById(id);
     }
 
     @Operation(summary = "Get plants by user ID")
@@ -95,12 +70,7 @@ public class PlanteController {
     })
     @GetMapping("/utilisateur/{id_utilisateur}")
     public ResponseEntity<?> getPlantesByUtilisateurId(@PathVariable Integer id_utilisateur) {
-        List<Plante> plantes = planteRepository.findByUtilisateurId(id_utilisateur);
-        if (plantes.isEmpty()) {
-            return ResponseEntity.status(404).body("No plants found for this user");
-        } else {
-            return ResponseEntity.ok(plantes);
-        }
+        return planteService.getPlantesByUtilisateurId(id_utilisateur);
     }
 
     @Operation(summary = "Delete a plant by ID")
@@ -110,13 +80,7 @@ public class PlanteController {
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePlante(@PathVariable Integer id) {
-        Optional<Plante> plante = planteRepository.findById(id);
-        if (plante.isPresent()) {
-            planteRepository.delete(plante.get());
-            return ResponseEntity.ok().body("Plante supprimée avec succès");
-        } else {
-            return ResponseEntity.status(404).body("Plante non trouvée");
-        }
+        return planteService.deletePlante(id);
     }
 
     @Operation(summary = "Update a plant by ID")
@@ -127,18 +91,6 @@ public class PlanteController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePlante(@PathVariable Integer id, @RequestBody Plante updatedPlante) {
-        Optional<Plante> existingPlanteOptional = planteRepository.findById(id);
-        if (existingPlanteOptional.isPresent()) {
-            Plante existingPlante = existingPlanteOptional.get();
-            existingPlante.setNom_plante(updatedPlante.getNom_plante());
-            existingPlante.setDescription(updatedPlante.getDescription());
-            existingPlante.setVariete(updatedPlante.getVariete());
-            // Ajoutez les autres champs que vous souhaitez mettre à jour
-
-            Plante updatedPlanteEntity = planteRepository.save(existingPlante);
-            return ResponseEntity.ok(updatedPlanteEntity);
-        } else {
-            return ResponseEntity.status(404).body("Plante non trouvée");
-        }
+        return planteService.updatePlante(id, updatedPlante);
     }
 }
