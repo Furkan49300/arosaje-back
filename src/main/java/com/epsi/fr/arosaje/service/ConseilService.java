@@ -1,9 +1,9 @@
 package com.epsi.fr.arosaje.service;
 
 import com.epsi.fr.arosaje.ConseilDTO;
-import com.epsi.fr.arosaje.bo.Conseil;
-import com.epsi.fr.arosaje.bo.Plante;
-import com.epsi.fr.arosaje.bo.Utilisateur;
+import com.epsi.fr.arosaje.Entity.Conseil;
+import com.epsi.fr.arosaje.Entity.Plante;
+import com.epsi.fr.arosaje.Entity.Utilisateur;
 import com.epsi.fr.arosaje.repository.ConseilRepository;
 import com.epsi.fr.arosaje.repository.PlanteRepository;
 import com.epsi.fr.arosaje.repository.UtilisateurRepository;

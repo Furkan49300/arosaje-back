@@ -1,6 +1,5 @@
-package com.epsi.fr.arosaje.bo;
+package com.epsi.fr.arosaje.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -13,7 +12,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;

@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje.controller;
 
-import com.epsi.fr.arosaje.bo.Plante;
+import com.epsi.fr.arosaje.Entity.Plante;
 import com.epsi.fr.arosaje.service.PlanteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

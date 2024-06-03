@@ -1,7 +1,7 @@
 package com.epsi.fr.arosaje.service;
 
-import com.epsi.fr.arosaje.bo.Reservation;
-import com.epsi.fr.arosaje.bo.Utilisateur;
+import com.epsi.fr.arosaje.Entity.Reservation;
+import com.epsi.fr.arosaje.Entity.Utilisateur;
 import com.epsi.fr.arosaje.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

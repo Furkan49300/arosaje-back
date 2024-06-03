@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje.repository;
 
-import com.epsi.fr.arosaje.bo.Plante;
+import com.epsi.fr.arosaje.Entity.Plante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

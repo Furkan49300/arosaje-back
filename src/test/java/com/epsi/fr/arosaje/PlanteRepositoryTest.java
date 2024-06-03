@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje;
 
-import com.epsi.fr.arosaje.bo.Plante;
+import com.epsi.fr.arosaje.Entity.Plante;
 import com.epsi.fr.arosaje.repository.PlanteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

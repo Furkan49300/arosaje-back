@@ -1,7 +1,7 @@
 package com.epsi.fr.arosaje.controller;
 
-import com.epsi.fr.arosaje.bo.ChatConversation;
-import com.epsi.fr.arosaje.bo.ChatMessage;
+import com.epsi.fr.arosaje.Entity.ChatConversation;
+import com.epsi.fr.arosaje.Entity.ChatMessage;
 import com.epsi.fr.arosaje.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

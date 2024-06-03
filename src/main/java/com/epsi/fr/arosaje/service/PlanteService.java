@@ -1,7 +1,7 @@
 package com.epsi.fr.arosaje.service;
 
-import com.epsi.fr.arosaje.bo.Plante;
-import com.epsi.fr.arosaje.bo.Utilisateur;
+import com.epsi.fr.arosaje.Entity.Plante;
+import com.epsi.fr.arosaje.Entity.Utilisateur;
 import com.epsi.fr.arosaje.repository.PlanteRepository;
 import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;

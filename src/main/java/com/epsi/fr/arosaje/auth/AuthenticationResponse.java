@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje.auth;
 
-import com.epsi.fr.arosaje.bo.Role;
+import com.epsi.fr.arosaje.Entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

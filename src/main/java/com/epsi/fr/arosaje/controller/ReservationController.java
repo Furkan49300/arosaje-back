@@ -1,6 +1,6 @@
 package com.epsi.fr.arosaje.controller;
 
-import com.epsi.fr.arosaje.bo.Reservation;
+import com.epsi.fr.arosaje.Entity.Reservation;
 import com.epsi.fr.arosaje.service.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

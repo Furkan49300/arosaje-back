@@ -1,9 +1,8 @@
-package com.epsi.fr.arosaje.bo;
+package com.epsi.fr.arosaje.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jdk.jshell.execution.Util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,6 @@ import lombok.Setter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Getter

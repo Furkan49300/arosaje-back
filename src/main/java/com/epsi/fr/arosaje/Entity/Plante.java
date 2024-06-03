@@ -1,8 +1,7 @@
-package com.epsi.fr.arosaje.bo;
+package com.epsi.fr.arosaje.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;

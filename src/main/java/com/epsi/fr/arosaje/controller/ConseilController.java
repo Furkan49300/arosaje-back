@@ -1,7 +1,7 @@
 package com.epsi.fr.arosaje.controller;
 
 import com.epsi.fr.arosaje.ConseilDTO;
-import com.epsi.fr.arosaje.bo.Conseil;
+import com.epsi.fr.arosaje.Entity.Conseil;
 import com.epsi.fr.arosaje.service.ConseilService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

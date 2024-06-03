@@ -1,4 +1,4 @@
-package com.epsi.fr.arosaje.bo;
+package com.epsi.fr.arosaje.Entity;
 
 public enum Role {
     USER,

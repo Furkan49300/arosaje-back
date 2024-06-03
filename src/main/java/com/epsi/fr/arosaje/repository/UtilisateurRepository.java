@@ -1,7 +1,7 @@
 package com.epsi.fr.arosaje.repository;
 
-import com.epsi.fr.arosaje.bo.Role;
-import com.epsi.fr.arosaje.bo.Utilisateur;
+import com.epsi.fr.arosaje.Entity.Role;
+import com.epsi.fr.arosaje.Entity.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

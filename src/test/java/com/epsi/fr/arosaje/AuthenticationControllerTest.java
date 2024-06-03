@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 import com.epsi.fr.arosaje.auth.*;
-import com.epsi.fr.arosaje.bo.Role;
-import com.epsi.fr.arosaje.bo.Utilisateur;
+import com.epsi.fr.arosaje.Entity.Role;
+import com.epsi.fr.arosaje.Entity.Utilisateur;
 import com.epsi.fr.arosaje.config.JwtService;
 import com.epsi.fr.arosaje.repository.UtilisateurRepository;
 import org.junit.Test;
